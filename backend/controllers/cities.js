@@ -28,7 +28,8 @@ const getCityById = async (req, res) => {
 const createCity = async (req, res) => {
   const schema = Joi.object({
     capital: Joi.string().min(4).required(),
-    country: Joi.string().min(4).required()
+    country: Joi.string().min(4).required(),
+    image: Joi.string()
   });
 
   const { error } = schema.validate(req.body);
@@ -39,7 +40,8 @@ const createCity = async (req, res) => {
 
   const city = {
     capital: req.body.capital,
-    country: req.body.country
+    country: req.body.country,
+    image: req.body.image
   }
 
   try {

@@ -5,13 +5,13 @@ const jwt = require('jsonwebtoken');
 const users = require('../models/users');
 
 const signUpUser = async (req, res) => {
-  const { name, email, password} = req.body;
+  const { name, email, password } = req.body;
 
   let hashedPassword;
   try {
     hashedPassword = await bcrypt.hash(password, 12);
   } catch (err) {
-    return res.status(500).send('Could not create user, try again please');
+    return res.status(500).send('1Could not create user, try again please');
   }
 
   const newUser = {
@@ -23,13 +23,13 @@ const signUpUser = async (req, res) => {
 
   try {
     const exist = await users.findByEmail(newUser.email);
-    if(exist.length > 0) {
+    if (exist.length > 0) {
       return res.status(422).send('Could create user, user exists');
     }
 
     const result = await users.create(newUser);
-    if(!result) {
-      return res.status(500).send('Could not create user, try again please');
+    if (!result) {
+      return res.status(500).send('2Could not create user, try again please');
     }
 
     const token = jwt.sign(
@@ -40,25 +40,27 @@ const signUpUser = async (req, res) => {
       process.env.JWT_KEY,
       { expiresIn: '1h' }
     );
+      if (result){
 
-    res.status(201).json({
-      id: newUser.id,
-      email: newUser.email,
-      token
-    })
+        res.status(201).json({
+          id: newUser.id,
+          email: newUser.email,
+          token
+        })
+      }
 
   } catch (err) {
-    return res.status(500).send('Could not create user, try again please');
+    return res.status(500).send('3Could not create user, try again please');
   }
 };
 
 const loginUser = async (req, res) => {
-  const {email, password} = req.body;
-  
+  const { email, password } = req.body;
+
   let identifiedUser;
   try {
     const result = await users.findByEmail(email);
-    if(!result[0]) {
+    if (!result[0]) {
       return res.status(401).send('No user found - Check your credentials');
     }
     identifiedUser = result[0];
@@ -69,7 +71,7 @@ const loginUser = async (req, res) => {
   let isValidPassword;
   try {
     isValidPassword = await bcrypt.compare(password, identifiedUser.password);
-    if(!isValidPassword) {
+    if (!isValidPassword) {
       return res.status(401).send('No user found - Check your credentials');
     }
   } catch (err) {

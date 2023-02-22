@@ -2,7 +2,7 @@ GET http://localhost:5000/api/cities
 
 
 ###
-GET http://localhost:5000/api/cities/3
+GET http://localhost:5000/api/cities/1
 
 
 ###
@@ -24,9 +24,9 @@ POST http://localhost:5000/api/users/signup
 Content-Type: application/json
 
 {
-  "name": "John Wayne",
-  "email": "john@wayne.com",
-  "password": "john@wayne"
+  "name": "John Senaaaa",
+  "email": "john@senaaaa.com",
+  "password": "john@senaaa"
 }
 
 ###

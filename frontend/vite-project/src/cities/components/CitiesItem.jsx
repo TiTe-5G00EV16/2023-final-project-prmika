@@ -1,5 +1,6 @@
 
 import React from "react";
+import Button from "../../shared/components/button/Button";
 import Card from "../../shared/components/card/Card";
 import './CitiesItem.css';
 const CityItem = props => {
@@ -13,8 +14,8 @@ const CityItem = props => {
       <h3>{props.capital} - {props.country}</h3>
     </div>
     <div className="city-item_actions">
-      <button>Edit</button>
-      <button>Delete</button>
+      <Button>Edit</Button>
+      <Button danger>Delete</Button>
     </div>
     </Card>
   </li>

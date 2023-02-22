@@ -29,12 +29,14 @@ describe('GET cities endpoint', ()=> {
         expect.objectContaining({
           id: 1,
           capital: 'Oslo',
-          country: 'Norway'
+          country: 'Norway',
+          image: 'https://adventures.com/media/206229/g24w1eitqve-hd.jpg?anchor=center&mode=crop&width=800&height=450&rnd=132741748530000000&quality=100&format=jpg'
         }), 
         expect.objectContaining({
           id: 2,
           capital: 'Pretoria',
-          country: 'South Africa'
+          country: 'South Africa',
+          image: 'http://news-events.sleeping-out.co.za/wp-content/uploads/2014/10/city.jpg'
         }),
       ])
     )
@@ -62,7 +64,8 @@ describe('GET city by id enpoint', () => {
       expect.objectContaining({
         id: 1,
         capital: 'Oslo',
-        country: 'Norway'
+        country: 'Norway',
+        image: 'https://adventures.com/media/206229/g24w1eitqve-hd.jpg?anchor=center&mode=crop&width=800&height=450&rnd=132741748530000000&quality=100&format=jpg'
       })
     );
   });
@@ -107,7 +110,8 @@ describe('POST city endpoint', ()=> {
   test('should create a new city', async() => {
     const city = {
       capital: 'Test Town',
-      country: 'Test Country'
+      country: 'Test Country',
+      image: 'https://www.iss.europa.eu/sites/default/files/styles/large_banner_image/public/city-5000648_1920%20banner.jpg?itok=2VD5CQf5?%3E'
     }
 
     const response = await supertest(app)

@@ -3,6 +3,8 @@ import Cities from './cities/pages/cities';
 import AddCity from './cities/pages/AddCity';
 import { QueryClient, QueryClientProvider } from "react-query";
 import './App.css'
+import Users from './users/pages/Users';
+import Authenticate from './users/pages/Authenticate';
 
 function App() {
 
@@ -16,9 +18,15 @@ function App() {
       <Route path="/" exact>
         <Cities />
       </Route>
+      <Route path="/users" exact>
+        <Users />
+      </Route>
 
       <Route path="/cities/new" exact>
         <AddCity />
+      </Route>
+      <Route path="/auth">
+        <Authenticate/>
       </Route>
       <Redirect to="/" />
       </Switch>
