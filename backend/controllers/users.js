@@ -10,8 +10,9 @@ const signUpUser = async (req, res) => {
   let hashedPassword;
   try {
     hashedPassword = await bcrypt.hash(password, 12);
+    
   } catch (err) {
-    return res.status(500).send('1Could not create user, try again please');
+    return res.status(500).send('Could not create user, try again please');
   }
 
   const newUser = {
@@ -28,8 +29,9 @@ const signUpUser = async (req, res) => {
     }
 
     const result = await users.create(newUser);
+    
     if (!result) {
-      return res.status(500).send('2Could not create user, try again please');
+      return res.status(500).send('Could not create user, try again please');
     }
 
     const token = jwt.sign(
@@ -40,18 +42,21 @@ const signUpUser = async (req, res) => {
       process.env.JWT_KEY,
       { expiresIn: '1h' }
     );
-      if (result){
-
+      
+      
         res.status(201).json({
           id: newUser.id,
           email: newUser.email,
-          token
+          token: token
         })
-      }
+      
 
   } catch (err) {
-    return res.status(500).send('3Could not create user, try again please');
+    console.log("error: " + err);
+    return res.status(500).send('Could not create user, try again please');
   }
+  
+  
 };
 
 const loginUser = async (req, res) => {

@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
-import Cities from './cities/pages/cities';
+import Cities from './cities/pages/Cities';
 import AddCity from './cities/pages/AddCity';
 import { QueryClient, QueryClientProvider } from "react-query";
 import './App.css'

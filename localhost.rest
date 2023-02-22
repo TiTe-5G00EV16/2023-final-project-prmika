@@ -12,7 +12,8 @@ Authorization: BEARER {{authToken}}
 
 {
   "capital": "Maputo",
-  "country": "Mozabique"
+  "country": "Mozabique",
+  "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG-GoIlmsdgP7Br6Une5WtzDo8MTeA5D6kh7LUgHpkaQ&s"
 }
 
 ### 
@@ -24,19 +25,19 @@ POST http://localhost:5000/api/users/signup
 Content-Type: application/json
 
 {
-  "name": "John Senaaaa",
-  "email": "john@senaaaa.com",
-  "password": "john@senaaa"
+  "name": "John Whicky",
+  "email": "john@whicky.com",
+  "password": "john@whicky"
 }
 
 ###
-# @name login
+ # @name login
 POST http://localhost:5000/api/users/login
 Content-Type: application/json
 
 {
-  "email": "john@wayne.com",
-  "password": "john@wayne"
+  "email": "john@whicky.com",
+  "password": "john@whicky"
 }
 
 ###
