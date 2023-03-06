@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { useMutation } from "react-query";
 
 import Card from "../../shared/components/card/Card";
@@ -7,6 +7,8 @@ import Button from "../../shared/components/button/Button";
 
 import { loginUser, signUpUser } from "../api/users";
 import "./Authenticate.css";
+import { AuthContext } from "../../shared/context/auth-context";
+
 
 const Authenticate = (props) => {
   const nameRef = useRef();
@@ -19,11 +21,14 @@ const Authenticate = (props) => {
     setLoginMode((prevMode) => !prevMode);
   };
 
+  const auth = useContext(AuthContext);
+
   const signUpUserMutation = useMutation({
     mutationFn: signUpUser,
     onSuccess: (data) => {
       // Will execute only once, for the last mutation,
       // regardless which mutation resolves first
+      auth.login(data.id, data.token);
       console.log(data);
     },
     onError: (error) => {
@@ -37,6 +42,7 @@ const Authenticate = (props) => {
     onSuccess: (data) => {
       // Will execute only once, for the last mutation,
       // regardless which mutation resolves first
+      auth.login(data.id, data.token);
       console.log(data);
     },
     onError: (error) => {
@@ -81,7 +87,7 @@ const Authenticate = (props) => {
           {isLoginMode ? "LOGIN" : "SIGNUP"}
         </Button>
       </form>
-
+      <p>{isLoginMode ? "Not a user yet?" : "Allready a user?"}</p>
       <Button inverse onClick={switchModeHanlder}>
         {isLoginMode ? "SignUp" : "Login"} instead?
       </Button>
