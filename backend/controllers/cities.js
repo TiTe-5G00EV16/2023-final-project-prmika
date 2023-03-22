@@ -13,6 +13,7 @@ const getCities = async (req, res) => {
   }
 };
 
+
 const getCityById = async (req, res) => {
   try {
     const id = parseInt(req.params.id);

@@ -6,6 +6,7 @@ export const getCities = async () => {
     return await res.json();
   };
   
+  
   export const createCity = async ({capital, country, image}) => {
     console.log(capital, country, image);
     const res = await fetch(
