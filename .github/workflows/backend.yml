@@ -1,10 +1,11 @@
-name: Backend
+name: demo-project-workflows
 on:
   push:
     branches:
       - main
     paths:
       - backend/**
+     # - frontend/**
 
 jobs:
   test:
