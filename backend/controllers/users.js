@@ -43,7 +43,6 @@ const signUpUser = async (req, res) => {
       { expiresIn: '1h' }
     );
       
-      
         res.status(201).json({
           id: newUser.id,
           email: newUser.email,

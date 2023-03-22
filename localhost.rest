@@ -25,10 +25,11 @@ POST http://localhost:5000/api/users/signup
 Content-Type: application/json
 
 {
-  "name": "John Whicky",
-  "email": "john@whicky.com",
-  "password": "john@whicky"
+  "name": "Tony Stark Wayne1",
+  "email": "tony@stark1.com",
+  "password": "password1234"
 }
+
 
 ###
  # @name login
@@ -36,8 +37,8 @@ POST http://localhost:5000/api/users/login
 Content-Type: application/json
 
 {
-  "email": "john@whicky.com",
-  "password": "john@whicky"
+  "email": "tony@stark.com",
+  "password": "password123"
 }
 
 ###
