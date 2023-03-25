@@ -38,7 +38,7 @@ jobs:
         working-directory: ./frontend
         # Run the tests
         run: npm run test:ci     
- deploy:
+  deploy:
     # The runner to use
     runs-on: ubuntu-latest
     # The steps to execute
