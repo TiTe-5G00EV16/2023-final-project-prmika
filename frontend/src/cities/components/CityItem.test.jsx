@@ -33,6 +33,8 @@ const queryClient = new QueryClient({
             country={TEST_CITY_DATA.country}
             image={TEST_CITY_DATA.image}
         />, { wrapper });
-        expect(screen.getByText('Maputo - Mozambique')).toBeInTheDocument();
+    expect(screen.getByText('Maputo - Mozambique')).toBeInTheDocument();
+    expect(screen.getByRole('img')).toBeInTheDocument();
+    expect(screen.getByAltText('Maputo')).toBeInTheDocument();
     });
   });
