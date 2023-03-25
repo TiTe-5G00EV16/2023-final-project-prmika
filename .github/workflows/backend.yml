@@ -2,7 +2,7 @@ name: demo-project-backend-workflow
 on:
   push:
     branches:
-      - main
+      - test
     paths:
       - backend/**
      

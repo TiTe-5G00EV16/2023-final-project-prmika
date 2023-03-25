@@ -2,7 +2,7 @@ name: demo-project-frontend-workflow
 on:
   push:
     branches:
-      - main
+      - test
     paths:
       - frontend/**
 
@@ -40,3 +40,38 @@ jobs:
         run: npm run test:ci
 
         
+ deploy:
+    # The runner to use
+    runs-on: ubuntu-latest
+    # The steps to execute
+    steps:
+      # Step to fetch the code from the repo
+      - name: Fetch code
+        # The actions that the step uses
+        uses: actions/checkout@v3
+        #  # Step to install the latest node.js
+      - name: Install Node.js
+        # The actions that the step uses
+        uses: actions/setup-node@v3
+        # Specific configuration for the action
+        with:
+          # Update to the latest node lts version
+          node-version: "18"
+        # Step to install the node modules
+      - name: Install react production dependencies
+        # define the working directory for the command
+        working-directory: ./frontend
+        # Install modules from packages.json
+        run: npm install --production
+        # Step to run the production build command
+      - name: Build production
+        # define the working directory for the command
+        working-directory: ./frontend
+        # Run the react build command
+        run: npm run build
+      # Step to deploy the build
+      - name: Deploy build
+        # define the working directory for the command
+        working-directory: ./frontend
+        # Run a fake deploy command
+        run: echo "Deploying..."
