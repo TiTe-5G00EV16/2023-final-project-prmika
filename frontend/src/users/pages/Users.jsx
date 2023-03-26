@@ -1,26 +1,28 @@
-
-// Users.jsx
 import React from "react";
-import UsersList from "../components/UsersList";
+import { useQuery } from 'react-query'
 
-const DUMMY_USERS = [
-  {
-    id: 'asdsad',
-    name: 'John Smith',
-    email: 'john@smith.com'
-  },{
-    id: 'fdgfdgfd',
-    name: 'John Wick',
-    email: 'john@wick.com'
-  },{
-    id: 'nbvvbnbv',
-    name: 'Tony Stark',
-    email: 'tony@stark.com'
-  }
-];
+import UsersList from '../components/UsersList';
+import LoadingSpinner from '../../shared/components/loadingspinner/LoadingSpinner'
+
+import { getUsers } from "../api/users";
 
 const Users = () => {
-  return <UsersList items={DUMMY_USERS} />;
+  const { isLoading, error, data } = useQuery(
+    "UsersData", 
+    getUsers
+  );
+
+  if (isLoading) return (
+    <div className="center">
+      <LoadingSpinner />;
+    </div>
+  );
+
+  if (error) return "An error has occurred: " + error.message;
+
+  return (
+    <UsersList items={data} />
+  )
 };
 
 export default Users;

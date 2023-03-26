@@ -1,6 +1,21 @@
 const pool = require('../db/pool');
 
 const users = {
+  findAll: () => new Promise((resolve, reject) => {
+    pool.getConnection((err, connection) => {
+      if(err) {
+        return reject(err);
+      }
+
+      connection.query('SELECT * FROM users', (err, result) => {
+        connection.release();
+        if(err) {
+          return reject(err);
+        }
+        resolve(result);
+      });
+    });
+  }),
   create: (user) => new Promise((resolve, reject) => {
     pool.getConnection((err, connection) => {
       if(err) {

@@ -1,10 +1,12 @@
-name: Backend PR
+name: Backend-test
 on:
-  pull_request:
+  push:
     branches:
-      - main
+      - test
     paths:
       - backend/**
+     
+
 jobs:
   test:
     timeout-minutes: 5
@@ -44,4 +46,3 @@ jobs:
           JWT_KEY: ${{ secrets.JWT_KEY }}
         working-directory: ./backend
         run: npm run test
-    
