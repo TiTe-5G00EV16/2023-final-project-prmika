@@ -2,41 +2,23 @@ name: demo-project-frontend-workflow
 on:
   push:
     branches:
-      - main
+      - test
     paths:
       - frontend/**
-
-      
 jobs:
-  # Name of the job
   test:
-    # The runner to use
+    timeout-minutes: 5
     runs-on: ubuntu-latest
-    # The steps to execute
     steps:
-      # Step to fetch the code from the repo
       - name: Fetch code
-        # The actions that the step uses
         uses: actions/checkout@v3
-        #  # Step to install the latest node.js
       - name: Install Node.js
-        # The actions that the step uses
         uses: actions/setup-node@v3
-        # Specific configuration for the action
         with:
-          # Update to the latest node lts version
           node-version: "18"
-        # Step to install the node modules
-      - name: Install node dependencies
-        # define the working directory for the command
+      - name: Install the Node modules
         working-directory: ./frontend
-        # Install modules from packages.json
         run: npm install
-        # Step to run the tests
-      - name: Run tests
-        # define the working directory for the command
+      - name: testing-library tests
         working-directory: ./frontend
-        # Run the tests
-        run: npm run test:ci
-
-        
+        run: npm run test
