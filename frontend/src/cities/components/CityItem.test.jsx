@@ -1,7 +1,7 @@
 
 import { render, screen } from '@testing-library/react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import CitiesItem from './CitiesItem';
+import CityItem from './CityItem';
 
 const TEST_CITY_DATA = {
     "id": 1,
@@ -26,7 +26,7 @@ const queryClient = new QueryClient({
   
   describe('The CityItem', () => { 
     test('Should show a city when given', ()=>{
-        render(<CitiesItem
+        render(<CityItem
             key={TEST_CITY_DATA.id}
             id={TEST_CITY_DATA.id}
             capital={TEST_CITY_DATA.capital}
