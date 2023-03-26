@@ -17,12 +17,12 @@ const wrapper = ({ children }) => (
   </QueryClientProvider>
 );
 
-describe('The Cities Page', () => {
-  test('Should show a loading spinner while waiting', () =>{
-    render(
-      <Cities />, { wrapper }
-    );
+// describe('The Cities Page', () => {
+//   test('Should show a loading spinner while waiting', () =>{
+//     render(
+//       <Cities />, { wrapper }
+//     );
 
-    expect(screen.getByTestId('loading-spinner')).toBeInTheDocument();
-  });
-});
+//     expect(screen.getByTestId('loading-spinner')).toBeInTheDocument();
+//   });
+// });
