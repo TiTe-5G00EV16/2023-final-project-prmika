@@ -8,7 +8,7 @@ const { createCity, deleteCity, getCities, getCityById } = require('../controlle
 router.get('/', getCities);
 router.get('/:id', getCityById);
 
-//router.use(verifyToken);
+router.use(verifyToken);
 
 router.post('/', createCity);
 router.delete('/:id', deleteCity);
