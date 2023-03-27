@@ -2,9 +2,20 @@ GET http://localhost:5000/api/cities
 
 
 ###
-GET http://localhost:5000/api/cities/1
+GET http://localhost:5000/api/chains/chain/100
 
+###
+GET http://localhost:5000/api/chains
 
+### 
+POST http://localhost:5000/api/stores
+Content-Type: application/json
+
+{
+  "chain":200,
+  "name":"Prisma Kaleva423344322",
+  "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG-GoIlmsdgP7Br6Une5WtzDo8MTeA5D6kh7LUgHpkaQ&s"
+}
 ###
 POST http://localhost:5000/api/cities
 Content-Type: application/json
