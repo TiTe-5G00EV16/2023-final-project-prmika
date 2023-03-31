@@ -32,7 +32,6 @@ const chains = {
     });
   }),
   findByChainId: (chain) => new Promise((resolve, reject) => {
-    console.log("käykö se täällä");
     pool.getConnection((err, connection) => {
       if(err) {
         return reject(err);

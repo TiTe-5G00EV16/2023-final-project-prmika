@@ -31,9 +31,9 @@ CREATE TABLE
         PRIMARY KEY (`id`)
     ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 CREATE TABLE
-    IF NOT EXISTS `store_chains` (
+    IF NOT EXISTS `chains` (
         `id` int(11) NOT NULL AUTO_INCREMENT,
-        `name` varchar(60) NOT NULL,
+        `chain_name` varchar(60) NOT NULL,
         `chain_id` int(11) NOT NULL,
         `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
         `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -41,7 +41,7 @@ CREATE TABLE
     ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 
 INSERT INTO
-    `store_chains` (`name`,`chain_id`)
+    `chains` (`chain_name`,`chain_id`)
 VALUES (
     'Kesko',
     100

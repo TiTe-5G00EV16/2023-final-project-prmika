@@ -1,28 +1,25 @@
 import React from "react";
 import { useQuery } from 'react-query'
-
-import CitiesList from '../components/CitiesList';
 import LoadingSpinner from '../../shared/components/loadingspinner/LoadingSpinner'
+import { getStores } from "../api/stores";
+import StoresList from "../components/StoresList";
 
-import { getCities } from "../api/cities";
-
-const Cities = () => {
-  const { isLoading, error, data } = useQuery(
-    "citiesData", 
-    getCities
+const Stores = () => {
+  const {isLoading, error, data } = useQuery(
+    "storesData",
+    getStores
   );
-
   if (isLoading) return (
     <div className="center">
       <LoadingSpinner />
     </div>
   );
-
   if (error) return "An error has occurred: " + error.message;
 
   return (
-    <CitiesList items={data} />
-  )
-};
+    <StoresList items={data}/>
+    
+  ) 
+}
 
-export default Cities;
+export default Stores;

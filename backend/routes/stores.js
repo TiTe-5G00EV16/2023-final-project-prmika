@@ -9,7 +9,7 @@ router.get('/', getStores);
 router.get('/:id', getStoreById);
 //router.get('/:chain', getStoreByName);
 
-//router.use(verifyToken);
+router.use(verifyToken);
 
 router.post('/', createStore);
 router.delete('/:id', deleteStore);
