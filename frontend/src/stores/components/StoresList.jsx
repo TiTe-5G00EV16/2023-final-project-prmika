@@ -1,6 +1,6 @@
 
 import React from "react";
-import StoreItem from './storeItem';
+import StoreItem from './StoreItem';
 import './StoresList.css';
 const StoresList = props => {
 
