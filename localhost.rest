@@ -1,21 +1,25 @@
-GET http://localhost:5000/api/cities
+GET http://localhost:5000/api/products/b531da18-52cf-4d91-be45-c28f2a98115f
+
 
 
 ###
 GET http://localhost:5000/api/chains/chain/100
 
 ###
-GET http://localhost:5000/api/chains
+GET http://localhost:5000/api/products
 
 ### 
-POST http://localhost:5000/api/stores
+POST http://localhost:5000/api/products
 Content-Type: application/json
+Authorization: BEARER {{authToken}}
 
 {
-  "chain":200,
-  "name":"Prisma Kaleva423344322",
-  "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG-GoIlmsdgP7Br6Une5WtzDo8MTeA5D6kh7LUgHpkaQ&s"
-}
+    "title": "Toinen jalkapallo",
+    "description": "Vähän potkittu jalkapallo",
+    "image": "https://www.vastavalo.net/albums/userpics/22294/normal_p8172409pt.jpg",
+    "price": 1545.5,
+    "owner": "b531da18-52cf-4d91-be45-c28f2a98115f"
+  }
 ###
 POST http://localhost:5000/api/cities
 Content-Type: application/json
