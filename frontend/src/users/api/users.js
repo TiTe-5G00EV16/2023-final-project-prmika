@@ -1,3 +1,10 @@
+export const getUsers = async () => {
+  const res = await fetch(
+    `${import.meta.env.VITE_API_URL}/api/users`
+  );
+  return await res.json();
+};
+
 
 export const signUpUser = async ({name, email, password}) => {
     const res = await fetch(

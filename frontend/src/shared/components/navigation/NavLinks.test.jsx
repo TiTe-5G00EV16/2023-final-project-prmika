@@ -14,7 +14,7 @@ describe('The Navigation Links', () => {
 
     expect(screen.getByRole('list')).toHaveClass('nav-links');
     expect(screen.getByText('ALL CITIES')).toBeInTheDocument();
-    expect(screen.getByText('ALL CITIES')).toHaveAttribute('href', '/');
+    expect(screen.getByText('ALL CITIES')).toHaveAttribute('href', '/cities');
     
     expect(screen.getByText('AUTHENTICATE')).toBeInTheDocument();
     expect(screen.getByText('AUTHENTICATE')).toHaveAttribute('href', '/auth');
@@ -40,7 +40,7 @@ describe('The Navigation Links', () => {
 
     expect(screen.getByRole('list')).toHaveClass('nav-links');
     expect(screen.getByText('ALL CITIES')).toBeInTheDocument();
-    expect(screen.getByText('ALL CITIES')).toHaveAttribute('href', '/');
+    expect(screen.getByText('ALL CITIES')).toHaveAttribute('href', '/cities');
     
     expect(screen.queryByText('AUTHENTICATE')).toBeNull();
 

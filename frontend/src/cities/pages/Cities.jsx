@@ -14,7 +14,7 @@ const Cities = () => {
 
   if (isLoading) return (
     <div className="center">
-      <LoadingSpinner />;
+      <LoadingSpinner />
     </div>
   );
 

@@ -1,4 +1,4 @@
-name: demo-project-frontend-workflow
+name: Frontend-test
 on:
   push:
     branches:

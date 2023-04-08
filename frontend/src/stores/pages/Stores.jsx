@@ -1,28 +1,25 @@
 import React from "react";
 import { useQuery } from 'react-query'
-
-import UsersList from '../components/UsersList';
 import LoadingSpinner from '../../shared/components/loadingspinner/LoadingSpinner'
+import { getStores } from "../api/stores";
+import StoresList from "../components/StoresList";
 
-import { getUsers } from "../api/users";
-
-const Users = () => {
-  const { isLoading, error, data } = useQuery(
-    "UsersData", 
-    getUsers
+const Stores = () => {
+  const {isLoading, error, data } = useQuery(
+    "storesData",
+    getStores
   );
-
   if (isLoading) return (
     <div className="center">
-      <LoadingSpinner />;
+      <LoadingSpinner />
     </div>
   );
-
   if (error) return "An error has occurred: " + error.message;
 
   return (
-    <UsersList items={data} />
-  )
-};
+    <StoresList items={data}/>
+    
+  ) 
+}
 
-export default Users;
+export default Stores;
