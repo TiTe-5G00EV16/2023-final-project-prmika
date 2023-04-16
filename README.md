@@ -10,14 +10,25 @@ Docker:
   -docker compose up -d
   
 Frontend:
-./frontend/
-  -npm install
-  -npm run dev
+  ./frontend/
+    -npm install
+    -npm run dev
 
 Backend:
-./backend
-  -npm install
-  -nodemon serve.js
+  ./backend
+    -npm install
+    -nodemon serve.js
+
+Running tests:
+
+Frontend:
+  ./frontend/
+    -npm run test
+
+Backend:
+  jest:
+    ./backend
+      -npm run test
 
 Links:
 
