@@ -1,13 +1,13 @@
 import React from "react";
 import { useQuery } from 'react-query'
 import LoadingSpinner from '../../shared/components/loadingspinner/LoadingSpinner'
-import { getStores } from "../api/stores";
-import StoresList from "../components/StoresList";
+import { getProducts } from "../api/products";
+import ProductsList from "../components/ProductsList";
 
-const Stores = () => {
+const Products = () => {
   const {isLoading, error, data } = useQuery(
-    "storesData",
-    getStores
+    "productsData",
+    getProducts
   );
   if (isLoading) return (
     <div className="center">
@@ -17,9 +17,9 @@ const Stores = () => {
   if (error) return "An error has occurred: " + error.message;
 
   return (
-    <StoresList items={data}/>
+    <ProductsList items={data}/>
     
   ) 
 }
 
-export default Stores;
+export default Products;

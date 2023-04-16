@@ -7,11 +7,11 @@ import Button from '../../shared/components/button/Button';
 import Modal from '../../shared/components/modal/Modal';
 
 import { AuthContext } from '../../shared/context/auth-context';
-import { deleteStore } from "../api/stores";
+import { deleteProduct } from "../api/products";
 
-import './StoreItem.css';
+import './ProductItem.css';
 
-const StoreItem = props => {
+const ProductItem = props => {
   const auth = useContext(AuthContext);
 
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
@@ -19,8 +19,8 @@ const StoreItem = props => {
   const showConfirmationHandler = () => setShowConfirmationModal(true);
   const cancelConfirmationHandler = () => setShowConfirmationModal(false);
 
-  const deleteStoreMutation = useMutation({
-    mutationFn: deleteStore,
+  const deleteProductMutation = useMutation({
+    mutationFn: deleteProduct,
     onSuccess: (data) => {
       console.log(data);
     },
@@ -31,7 +31,7 @@ const StoreItem = props => {
 
   const deleteConfirmedHandler = () => {
     setShowConfirmationModal(false);
-    deleteStoreMutation.mutate({
+    deleteProductMutation.mutate({
       id: props.id,
       token: auth.token
     })
@@ -53,27 +53,31 @@ const StoreItem = props => {
         <p>Are you sure? Once it's gone, it's gone!</p>
       </Modal>
 
-      <li className="store-item" key={props.id}>
-        <Link to="/cities">
-          <Card className="store-item__content">
-            <div className="store-item__image">
-              <img src={props.image} alt={props.name} />
+      <li className="product-item" key={props.id}>
+          <Card className="product-item__content">
+            <div className="product-item__image">
+              <img src={props.image} alt={props.title} />
             </div>
-            <div className="store-item__info">
+            <div className="product-item__info">
               <h3>
-                  {props.name} - {props.chain_name}
+                  {props.title} - {props.price}
               </h3>
+              <p>
+                {props.description}
+              </p>
+              <p>
+                {props.name}
+              </p>
             </div>
-            <div className="store-item_actions">
+            <div className="product-item_actions">
               {auth.isLoggedIn && (
                 <Button danger onClick={showConfirmationHandler}>Delete</Button>
                 )}
             </div>
           </Card>
-        </Link>
       </li>
     </>
   )
 };
 
-export default StoreItem;
+export default ProductItem;

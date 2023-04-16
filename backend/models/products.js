@@ -1,13 +1,13 @@
 const pool = require('../db/pool');
 
-const stores = {
+const products = {
   findAll: () => new Promise((resolve, reject) => {
     pool.getConnection((err, connection) => {
       if(err) {
         return reject(err);
       }
 
-      connection.query('SELECT chains.chain_name, stores.name, stores.image FROM stores, chains WHERE stores.chain = chains.chain_id', (err, result) => {
+      connection.query('SELECT p.title, p.description, p.image, p.price, u.name FROM products AS p JOIN users AS u ON u.id = p.owner', (err, result) => {
         connection.release();
         if(err) {
           return reject(err);
@@ -16,12 +16,12 @@ const stores = {
       });
     });
   }),
-  findStoreById: (id) => new Promise((resolve, reject) => {
+  findProductById: (id) => new Promise((resolve, reject) => {
     pool.getConnection((err, connection) => {
       if(err) {
         return reject(err);
       }
-      connection.query('SELECT chains.chain_name, stores.name, stores.image FROM stores, chains WHERE stores.chain = chains.chain_id   AND stores.id=?;', id, (err, result) => {
+      connection.query('SELECT p.title, p.description, p.image, p.price, u.name FROM products AS p JOIN users AS u ON u.id = p.owner WHERE p.id=?;', id, (err, result) => {
         console.log(result);
         connection.release();
         if(err) {
@@ -31,13 +31,13 @@ const stores = {
       });
     });
   }),
-  findByStore: (store) => new Promise((resolve, reject) => {
+  findByOwner: (owner) => new Promise((resolve, reject) => {
     pool.getConnection((err, connection) => {
       if(err) {
         return reject(err);
       }
-        const selectQuery = 'SELECT * FROM stores WHERE chain = ? AND name like ?;';
-        connection.query(selectQuery,[store.chain, store.name], (err, result) => {
+        const selectQuery = 'SELECT p.title, p.description, p.image, p.price, u.name FROM products AS p JOIN users AS u ON u.id = p.owner WHERE owner = ?;';
+        connection.query(selectQuery,[owner], (err, result) => {
           connection.release();
           if(err) {
             return reject(err);
@@ -46,13 +46,13 @@ const stores = {
         });
     });
   }),
-  create: (store) => new Promise((resolve, reject) => {
+  create: (product) => new Promise((resolve, reject) => {
     pool.getConnection((err, connection) => {
       if(err) {
         return reject(err);
       }
 
-      const query = connection.query('INSERT INTO stores SET ?;', store, (err, result) => {
+      const query = connection.query('INSERT INTO products SET ?;', product, (err, result) => {
         connection.release();
         if(err) {
           reject(err);
@@ -63,7 +63,7 @@ const stores = {
     });
   }),
   deleteById: (id) => new Promise((resolve, reject) => {
-    const deleteQuery = 'DELETE FROM stores WHERE id=?;';
+    const deleteQuery = 'DELETE FROM products WHERE id=?;';
     pool.getConnection((err, connection) => {
       if(err) {
         return reject(err);
@@ -80,4 +80,4 @@ const stores = {
   })
 };
 
-module.exports = stores;
+module.exports = products;

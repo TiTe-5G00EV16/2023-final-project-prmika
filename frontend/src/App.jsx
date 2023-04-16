@@ -14,8 +14,8 @@ import MainNavigation from "./shared/components/navigation/MainNavigation";
 
 import { AuthContext } from "./shared/context/auth-context";
 import { useCallback, useEffect, useState } from "react";
-import Stores from "./stores/pages/Stores";
-import AddStore from "./stores/pages/AddStore";
+import Products from "./products/pages/Products";
+import AddProduct from "./products/pages/AddProduct";
 
 const queryClient = new QueryClient();
 let logoutTimer;
@@ -77,7 +77,7 @@ useEffect(() => {
     routes = (
       <Switch>
         <Route path="/" exact>
-          <Stores />
+          <Products />
         </Route>
         <Route path="/cities" exact>
           <Cities />
@@ -88,8 +88,8 @@ useEffect(() => {
         <Route path="/cities/new" exact>
           <AddCity />
         </Route>
-        <Route path="/stores/new" exact>
-          <AddStore />
+        <Route path="/products/new" exact>
+          <AddProduct />
         </Route>
         <Redirect to="/" />
       </Switch>
@@ -98,7 +98,7 @@ useEffect(() => {
     routes = (
       <Switch>
         <Route path="/" exact>
-          <Stores />
+          <Products />
         </Route>
         <Route path="/auth">
           <Authenticate />
