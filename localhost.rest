@@ -6,7 +6,7 @@ GET http://localhost:5000/api/products/b531da18-52cf-4d91-be45-c28f2a98115f
 GET http://localhost:5000/api/chains/chain/100
 
 ###
-GET http://localhost:5000/api/products
+GET http://localhost:5000/api/cities
 
 ### 
 POST http://localhost:5000/api/products

@@ -1,3 +1,4 @@
+-- Active: 1680944133593@@127.0.0.1@3306@example_db
 CREATE TABLE
     IF NOT EXISTS `users` (
         `id` varchar(36) NOT NULL,
