@@ -40,8 +40,8 @@ POST http://localhost:5000/api/users/signup
 Content-Type: application/json
 
 {
-  "name": "Tony Stark Wayne1",
-  "email": "tony@stark1.com",
+  "name": "Tony Stark Wayne",
+  "email": "tony@stark.com",
   "password": "password1234"
 }
 

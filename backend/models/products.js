@@ -7,7 +7,7 @@ const products = {
         return reject(err);
       }
 
-      connection.query('SELECT products.title, products.description, products.image, products.price, products.owner FROM products', (err, result) => {
+      connection.query('SELECT p.title, p.description, p.image, p.price, u.name FROM products AS p JOIN users AS u ON u.id = p.owner', (err, result) => {
         connection.release();
         if(err) {
           return reject(err);
@@ -21,7 +21,7 @@ const products = {
       if(err) {
         return reject(err);
       }
-      connection.query('SELECT products.title, products.description, products.image, products.price, products.owner FROM products WHERE products.id=?;', id, (err, result) => {
+      connection.query('SELECT p.title, p.description, p.image, p.price, u.name FROM products AS p JOIN users AS u ON u.id = p.owner WHERE p.id=?;', id, (err, result) => {
         console.log(result);
         connection.release();
         if(err) {
@@ -36,7 +36,7 @@ const products = {
       if(err) {
         return reject(err);
       }
-        const selectQuery = 'SELECT * FROM products WHERE owner = ?;';
+        const selectQuery = 'SELECT p.title, p.description, p.image, p.price, u.name FROM products AS p JOIN users AS u ON u.id = p.owner WHERE owner = ?;';
         connection.query(selectQuery,[owner], (err, result) => {
           connection.release();
           if(err) {

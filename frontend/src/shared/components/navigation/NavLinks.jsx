@@ -9,7 +9,7 @@ const auth = useContext(AuthContext);
 
 return <ul className="nav-links">
   <li>
-      <NavLink to="/" exact>ALL STORES</NavLink>
+      <NavLink to="/" exact>ALL PRODUCTS</NavLink>
   </li>
   <li>
       <NavLink to="/cities" exact>ALL CITIES</NavLink>
@@ -26,7 +26,7 @@ return <ul className="nav-links">
   )}
   {auth.isLoggedIn && (
     <li>
-      <NavLink to="/stores/new">ADD STORE</NavLink>
+      <NavLink to="/products/new">ADD PRODUCT</NavLink>
     </li>
   )}
   {!auth.isLoggedIn && (

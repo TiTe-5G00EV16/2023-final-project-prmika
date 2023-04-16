@@ -1,17 +1,17 @@
 
-export const getStores = async () => {
+export const getProducts = async () => {
   const res = await fetch(
-    `${import.meta.env.VITE_API_URL}/api/stores`
+    `${import.meta.env.VITE_API_URL}/api/products`
     );
     console.log(res);
   return await res.json();
 };
 
 
-export const createStore = async ({ chain, name, image, token }) => {
-  console.log(chain, name, image);
+export const createProduct = async ({ title, description, image,price,owner, token }) => {
+  console.log(title, price, image,owner);
   const res = await fetch(
-    `${import.meta.env.VITE_API_URL}/api/stores`,
+    `${import.meta.env.VITE_API_URL}/api/products`,
     {
       method: 'POST',
       headers: {
@@ -20,18 +20,20 @@ export const createStore = async ({ chain, name, image, token }) => {
         Authorization: 'Bearer ' + token
       },
       body: JSON.stringify({
-        chain,
-        name,
-        image
+        title,
+        description,
+        image,
+        price,
+        owner
       })
     }
   );
   return await res.json();
 }
 
-export const deleteStore = async ({ id, token }) => {
+export const deleteProduct = async ({ id, token }) => {
   const res = await fetch(
-    `${import.meta.env.VITE_API_URL}/api/stores/${id}`,
+    `${import.meta.env.VITE_API_URL}/api/products/${id}`,
     {
       method: 'DELETE',
       headers: {
