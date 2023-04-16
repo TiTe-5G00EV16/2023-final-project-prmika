@@ -1,9 +1,7 @@
 # Demo Project
 Web Programming
 
-This is my demo project for web-development course
-
-
+This is my project for web-development course
 
 Running localy:
 
