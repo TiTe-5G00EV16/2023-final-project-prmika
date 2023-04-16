@@ -22,7 +22,7 @@ CREATE TABLE
     ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 
 CREATE TABLE
-    IF NOT EXISTS `products ` (
+    IF NOT EXISTS `products` (
         `id` int(11) NOT NULL AUTO_INCREMENT,
         `title` varchar(60) NOT NULL,
         `description` varchar(120) NOT NULL,
