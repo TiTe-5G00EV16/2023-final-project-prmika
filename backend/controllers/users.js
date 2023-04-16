@@ -16,6 +16,7 @@ const getUsers = async (req, res) => {
   }
 };
 
+
 const signUpUser = async (req, res) => {
   const { name, email, password } = req.body;
 
