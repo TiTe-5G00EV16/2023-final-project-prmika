@@ -5,7 +5,7 @@ import Card from "../../shared/components/card/Card";
 import Input from "../../shared/components/input/Input";
 import Button from "../../shared/components/button/Button";
 
-import { loginUser, signUpUser } from "../api/users";
+import { loginUser, resetPassword, signUpUser } from "../api/users";
 import "./Authenticate.css";
 import { AuthContext } from "../../shared/context/auth-context";
 
@@ -13,7 +13,9 @@ import { AuthContext } from "../../shared/context/auth-context";
 const Authenticate = (props) => {
   const nameRef = useRef();
   const emailRef = useRef();
+  const email2Ref = useRef();
   const passwordRef = useRef();
+  const password2Ref = useRef();
 
   const [isLoginMode, setLoginMode] = useState(true);
 
@@ -23,6 +25,17 @@ const Authenticate = (props) => {
 
   const auth = useContext(AuthContext);
 
+  const resetPasswordMutation = useMutation({
+    mutationFn: resetPassword,
+    onSuccess: (data) => {
+      console.log('Password changed');
+      console.log(data);
+    },
+    onError: (error) => {
+      // An error happened!
+      console.log(error);
+    },
+  });
   const signUpUserMutation = useMutation({
     mutationFn: signUpUser,
     onSuccess: (data) => {
@@ -67,6 +80,14 @@ const Authenticate = (props) => {
       });
     }
   };
+  const resetPasswordHandler = (event) => {
+    event.preventDefault();
+
+    resetPasswordMutation.mutate({
+      email: email2Ref.current.value,
+      password: password2Ref.current.value,
+    });
+  }
 
   return (
     <Card className="authentication">
@@ -85,12 +106,21 @@ const Authenticate = (props) => {
 
         <Button type="submit" disable={signUpUserMutation.isLoading}>
           {isLoginMode ? "LOGIN" : "SIGNUP"}
-        </Button>
+        </Button>        
       </form>
       <p>{isLoginMode ? "Not a user yet?" : "Allready a user?"}</p>
       <Button inverse onClick={switchModeHanlder}>
         {isLoginMode ? "SignUp" : "Login"} instead?
       </Button>
+      {isLoginMode ? 
+      <>
+        <p>forgot password?</p>
+          <Input id="email2" ref={email2Ref} type="text" label="Email" />
+          <Input id="password2" ref={password2Ref} type="text" label="new password" />
+        <Button onClick={resetPasswordHandler}>Reset password</Button>
+        
+      </>
+      :''}
     </Card>
   );
 };

@@ -1,4 +1,5 @@
 -- Active: 1680944133593@@127.0.0.1@3306@example_db
+
 CREATE TABLE
     IF NOT EXISTS `users` (
         `id` varchar(36) NOT NULL,
@@ -42,13 +43,26 @@ INSERT INTO
         `price`,
         `owner`
     )
-VALUES
-(
+VALUES (
         'Jalkapallo',
-        'Vähän potkittu jalkapallo',
+        'Jonkun verran potkittu jalkapallo',
         'https://www.vastavalo.net/albums/userpics/22294/normal_p8172409pt.jpg',
         15.50,
-        'f93028b4-f5de-4675-898c-01b92e95cbd3'
+        '3d4707aa-d293-4dec-b02b-79be13c6674d'
+    );
+
+INSERT INTO
+    `users` (
+        `id`,
+        `name`,
+        `email`,
+        `password`
+    )
+VALUES (
+        '3d4707aa-d293-4dec-b02b-79be13c6674d',
+        'Admin User',
+        'Admin@user.com',
+        '$2a$12$EdenwLXa2/gLJP.JxSfWI.2GOaCvlZNrympHg7BXUMzqjKv8qKJBq'
     );
 
 INSERT INTO
