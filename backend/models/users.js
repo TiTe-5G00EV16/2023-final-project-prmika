@@ -51,7 +51,6 @@ const users = {
       if (err) {
         return reject(err);
       } 
-      console.log(email, password);
       connection.query('UPDATE users SET password = ? WHERE email = ?;', [password, email], (err, result) => {
         connection.release();
         if (err) {

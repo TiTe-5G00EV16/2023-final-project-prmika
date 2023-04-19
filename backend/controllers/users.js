@@ -117,7 +117,6 @@ const loginUser = async (req, res) => {
 
 const resetPassword = async (req, res) => {
   const { email, password } = req.body;
-  console.log(email, password);
 
   let identifiedUser;
   try {
@@ -132,7 +131,6 @@ const resetPassword = async (req, res) => {
   let hashedPassword;
   try {
     hashedPassword = await bcrypt.hash(password, 12);
-    console.log(hashedPassword);
   } catch (err) {
     return res.status(500).send('Could not create user, try again please');
   }

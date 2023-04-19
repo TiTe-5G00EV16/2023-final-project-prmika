@@ -14,10 +14,21 @@ const getProducts = async (req, res) => {
 };
 
 
-const getProductById = async (req, res) => {
+const getProductByOwnerId = async (req, res) => {
   try {
     const owner = req.params.owner;
     const response = await products.findByOwner(owner);
+    if(response.length === 1) {
+      res.send(response);
+    }
+  } catch (err) {
+    res.status(500).send("Something went wrong");
+  }
+};
+const getProductById = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const response = await products.findById(id);
     if(response.length === 1) {
       res.send(response);
     }
@@ -94,6 +105,7 @@ const getProductsByOwner = async (req, res) => {
 module.exports = {
   createProduct,
   getProductById,
+  getProductByOwnerId,
   deleteProduct,
   getProductsByOwner,
   getProducts
