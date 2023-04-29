@@ -18,11 +18,6 @@ return <ul className="nav-links">
   )}
   {auth.isLoggedIn && (
     <li>
-      <NavLink to="/users" exact>ALL USERS</NavLink>
-    </li>
-  )}
-  {auth.isLoggedIn && (
-    <li>
       <NavLink to="/products/new">ADD PRODUCT</NavLink>
     </li>
   )}
