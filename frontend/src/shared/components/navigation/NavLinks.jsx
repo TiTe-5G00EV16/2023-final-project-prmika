@@ -16,17 +16,9 @@ return <ul className="nav-links">
       <NavLink to="/myproducts" exact>MY PRODUCTS</NavLink>
     </li>
   )}
-  <li>
-      <NavLink to="/cities" exact>ALL CITIES</NavLink>
-  </li>
   {auth.isLoggedIn && (
     <li>
       <NavLink to="/users" exact>ALL USERS</NavLink>
-    </li>
-  )}
-  {auth.isLoggedIn && (
-    <li>
-      <NavLink to="/cities/new">ADD CITY</NavLink>
     </li>
   )}
   {auth.isLoggedIn && (

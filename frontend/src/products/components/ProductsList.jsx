@@ -15,6 +15,7 @@ if (props.items.length === 0) {
     {props.items.map(product =>
       <ProductItem
         key={product.id}
+        id={product.id} 
         title={product.title}
         description={product.description}
         image={product.image}

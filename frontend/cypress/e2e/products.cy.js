@@ -1,8 +1,8 @@
 
-describe('The cities page', () => {
-  it('should show some cities', () => {
+describe('The products page', () => {
+  it('should show some products', () => {
     cy.visit('/')
-    cy.get('h1').should('contain', 'Capital Cities')
+    cy.get('h1').should('contain', 'Products')
   })
 
 it('should open the Login view when clicking Authenticate', () => {

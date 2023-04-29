@@ -6,7 +6,7 @@ GET http://localhost:5000/api/products/b531da18-52cf-4d91-be45-c28f2a98115f
 GET http://localhost:5000/api/chains/chain/100
 
 ###
-GET http://localhost:5000/api/cities
+GET http://localhost:5000/api/products/
 ###
 DELETE http://localhost:5000/api/cities/1
 Authorization: BEARER {{authToken}}
@@ -17,11 +17,24 @@ Content-Type: application/json
 Authorization: BEARER {{authToken}}
 
 {
-    "title": "Toiifjejef",
+    "title": "jalkapallo",
     "description": "Vähän potkittu jalkapallo",
     "image": "https://www.vastavalo.net/albums/userpics/22294/normal_p8172409pt.jpg",
     "price": 1545.5,
     "owner": "a72691d0-1782-4bf9-9585-d2cedb924dbd"
+  }
+
+### 
+PUT http://localhost:5000/api/products/1
+Content-Type: application/json
+Authorization: BEARER {{authToken}}
+
+{
+    "title": "jalkapallo",
+    "description": "Vähän potkittu pallo",
+    "image": "https://www.vastavalo.net/albums/userpics/22294/normal_p8172409pt.jpg",
+    "price": 13
+    
   }
 ###
 POST http://localhost:5000/api/cities
@@ -56,7 +69,7 @@ Content-Type: application/json
 
 {
   "email": "tony@stark.com",
-  "password": "password123"
+  "password": "password1234"
 }
 
 ###

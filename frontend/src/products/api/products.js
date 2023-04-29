@@ -38,6 +38,24 @@ export const createProduct = async ({ title, description, image,price,owner, tok
   );
   return await res.json();
 }
+export const updateProduct = async ({ title,description,image, price, id, token }) => {
+  const res = await fetch(`${import.meta.env.VITE_API_URL}/api/products/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: "Bearer " + token,
+    },
+    body: JSON.stringify({
+      title,
+      description,
+      image,
+      price,
+      id
+    }),
+  });
+  return res;
+};
 
 export const deleteProduct = async ({ id, token }) => {
   const res = await fetch(
@@ -50,5 +68,5 @@ export const deleteProduct = async ({ id, token }) => {
     }
   );
 
-  return await res.json();
+  return await res.text();
 };

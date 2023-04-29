@@ -4,8 +4,6 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
-import Cities from "./cities/pages/Cities";
-import AddCity from "./cities/pages/AddCity";
 import { QueryClient, QueryClientProvider } from "react-query";
 import "./App.css";
 import Users from "./users/pages/Users";
@@ -83,14 +81,8 @@ useEffect(() => {
         <Route path="/myproducts" exact>
           <OwnProducts />
         </Route>
-        <Route path="/cities" exact>
-          <Cities />
-        </Route>
         <Route path="/users" exact>
           <Users />
-        </Route>
-        <Route path="/cities/new" exact>
-          <AddCity />
         </Route>
         <Route path="/products/new" exact>
           <AddProduct />

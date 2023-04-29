@@ -4,6 +4,19 @@ Web Programming 2023 - Final Project
 
 This is my project for web-development course
 
+create .env file in the backend:
+
+PORT = 5000
+MYSQL_HOST='localhost'
+MYSQL_USERNAME='root'
+MYSQL_PASSWORD='example'
+MYSQL_DATABASE='example_db'
+JWT_KEY='super-secret-key-for-token'
+
+create .env file in the frontend:
+
+VITE_API_URL=http://localhost:5000
+
 Running localy:
 
 Docker:
@@ -29,6 +42,10 @@ Backend:
   jest:
     ./backend
       -npm run test
+
+
+
+
 
 Links:
 

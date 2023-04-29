@@ -20,7 +20,7 @@ const Select = forwardRef((props, ref) => {
   return (
     <div className="form-control">
       <label>Käyttäjä</label>
-      <select ref={ref.current.} id={props.id} type={props.type} placeholder={props.placeholder} onChange={handleOwnerChange}>
+      <select ref={ref.current.value} id={props.id} type={props.type} placeholder={props.placeholder} onChange={handleOwnerChange}>
       <option value=""></option>
       {data.map((owner) => (
           <option value={owner.id}>{owner.name}</option>

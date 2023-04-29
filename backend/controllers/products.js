@@ -39,7 +39,7 @@ const getProductById = async (req, res) => {
 
 const createProduct = async (req, res) => {
   const schema = Joi.object({
-    title: Joi.string().min(4).required(),
+    title: Joi.string().required(),
     description: Joi.string(),
     image: Joi.string(),
     price: Joi.number().positive().required(),
@@ -65,6 +65,43 @@ const createProduct = async (req, res) => {
     if(response) {
       product.id = response.insertId;
       res.status(201).send(product);
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Something went wrong");
+  }
+};
+const updateProduct = async (req, res) => {
+  const schema = Joi.object({
+    title: Joi.string().min(4).required(),
+    description: Joi.string(),
+    image: Joi.string(),
+    price: Joi.number().positive().required(),
+    id: Joi.number(),
+  });
+  
+  const { error } = schema.validate(req.body);
+  if(error) {
+    res.status(400).send(error.details[0].message);
+    return;
+  }
+
+  console.log(req);
+  
+  const product = {
+    title: req.body.title,
+    description: req.body.description,
+    image: req.body.image,
+    price: parseInt(req.body.price),
+    id: parseInt(req.params.id),
+  }
+  console.log(product);
+  
+  try {
+    const response = await products.update(product);
+    if(response) {
+      product.id = response.insertId;
+      res.status(204).send(product);
     }
   } catch (err) {
     console.log(err);
@@ -108,5 +145,6 @@ module.exports = {
   getProductByOwnerId,
   deleteProduct,
   getProductsByOwner,
-  getProducts
+  getProducts,
+  updateProduct
 };
