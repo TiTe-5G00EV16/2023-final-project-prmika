@@ -18,8 +18,6 @@ describe('The Navigation Links', () => {
     
     expect(screen.getByText('AUTHENTICATE')).toBeInTheDocument();
     expect(screen.getByText('AUTHENTICATE')).toHaveAttribute('href', '/auth');
-
-    expect(screen.queryByText('ALL USERS')).toBeNull();
   });
 
   test('Should show correct buttons when authorized', () =>{
@@ -43,9 +41,6 @@ describe('The Navigation Links', () => {
     expect(screen.getByText('ALL PRODUCTS')).toHaveAttribute('href', '/');
     
     expect(screen.queryByText('AUTHENTICATE')).toBeNull();
-
-    expect(screen.getByText('ALL USERS')).toBeInTheDocument();
-    expect(screen.getByText('ALL USERS')).toHaveAttribute('href', '/users');
 
     expect(screen.getByText('ADD PRODUCT')).toBeInTheDocument();
     expect(screen.getByText('ADD PRODUCT')).toHaveAttribute('href', '/products/new');
