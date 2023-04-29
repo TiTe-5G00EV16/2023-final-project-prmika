@@ -81,9 +81,9 @@ useEffect(() => {
         <Route path="/myproducts" exact>
           <OwnProducts />
         </Route>
-        <Route path="/users" exact>
+        {/* <Route path="/users" exact>
           <Users />
-        </Route>
+        </Route> */}
         <Route path="/products/new" exact>
           <AddProduct />
         </Route>

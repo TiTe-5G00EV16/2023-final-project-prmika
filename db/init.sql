@@ -14,7 +14,7 @@ CREATE TABLE
     IF NOT EXISTS `products` (
         `id` int(11) NOT NULL AUTO_INCREMENT,
         `title` varchar(60) NOT NULL,
-        `description` varchar(120) NOT NULL,
+        `description` varchar(400) NOT NULL,
         `image` varchar(200),
         `price` DOUBLE NOT NULL,
         `owner` VARCHAR(36) NOT NULL,

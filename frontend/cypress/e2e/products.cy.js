@@ -2,7 +2,7 @@
 describe('The products page', () => {
   it('should show some products', () => {
     cy.visit('/')
-    cy.get('h1').should('contain', 'Products')
+    cy.get('h1').should('contain', 'Marketplace')
   })
 
 it('should open the Login view when clicking Authenticate', () => {

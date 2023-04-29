@@ -8,6 +8,7 @@ import Button from "../../shared/components/button/Button";
 import { loginUser, resetPassword, signUpUser } from "../api/users";
 import "./Authenticate.css";
 import { AuthContext } from "../../shared/context/auth-context";
+import Modal from "../../shared/components/modal/Modal";
 
 
 const Authenticate = (props) => {
@@ -18,6 +19,10 @@ const Authenticate = (props) => {
   const password2Ref = useRef();
 
   const [isLoginMode, setLoginMode] = useState(true);
+  const [showResetModal, setShowResetModal] = useState(false);
+
+  const showResetHandler = () => setShowResetModal(true);
+  const cancelResetHandler = () => setShowResetModal(false);
 
   const switchModeHanlder = () => {
     setLoginMode((prevMode) => !prevMode);
@@ -87,10 +92,26 @@ const Authenticate = (props) => {
       email: email2Ref.current.value,
       password: password2Ref.current.value,
     });
+    setShowResetModal(false);
   }
 
   return (
     <>
+    <Modal
+        show={showResetModal}
+        header=""
+        footerClass="place-item__modal-actions"
+        footer={
+          <>
+            <p>forgot password?</p>
+            <Input id="email2" ref={email2Ref} type="text" label="Email" />
+            <Input id="password2" ref={password2Ref} type="text" label="new password" />
+            <Button onClick={resetPasswordHandler}>Reset password</Button>
+            <Button inverse onClick={cancelResetHandler}>Cancel</Button>
+          </>
+        }
+      >
+      </Modal>
       <Card className="authentication">
         <h2>{isLoginMode ? "LOGIN" : "SIGNUP"}</h2>
         <form onSubmit={onSubmitHandler}>
@@ -113,18 +134,12 @@ const Authenticate = (props) => {
         <Button inverse onClick={switchModeHanlder}>
           {isLoginMode ? "SignUp" : "Login"} instead?
         </Button>
+        {isLoginMode ?
+            <Button onClick={showResetHandler}>Reset password</Button>
+        : ''}
       </Card>
       <br />
-      {isLoginMode ?
-        <Card className="authentication">
-          <>
-            <p>forgot password?</p>
-            <Input id="email2" ref={email2Ref} type="text" label="Email" />
-            <Input id="password2" ref={password2Ref} type="text" label="new password" />
-            <Button onClick={resetPasswordHandler}>Reset password</Button>
-          </>
-        </Card>
-        : ''}
+
     </>
   );
 };
