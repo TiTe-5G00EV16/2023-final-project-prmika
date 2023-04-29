@@ -14,7 +14,7 @@ Architecture of the project followed guidelines set by the course
 Showcase video can be gound on the root of the repository in showcase.zip folder
 
 ### CHALLENGES:
-I'm have used alot C# and .NET in my work and nodejs is not so familiar to me. Also props took me alot of learning.   
+I have used alot C# and .NET in my work and nodejs is not so familiar to me. Also props took me alot of learning.   
 
 
 ### INSTALLATION:
