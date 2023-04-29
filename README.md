@@ -23,12 +23,13 @@ clone the repository
 -----
 create .env file in the backend:
 
-PORT = 5000
-MYSQL_HOST='localhost'
-MYSQL_USERNAME='root'
-MYSQL_PASSWORD='example'
-MYSQL_DATABASE='example_db'
-JWT_KEY='super-secret-key-for-token'
+PORT = 5000     
+MYSQL_HOST='localhost'        
+MYSQL_USERNAME='root'       
+MYSQL_PASSWORD='example'      
+MYSQL_DATABASE='example_db'     
+JWT_KEY='super-secret-key-for-token'      
+
 ------
 create .env file in the frontend:
 
@@ -39,25 +40,34 @@ Running localy:
 Docker:
   -docker compose up -d
 ------
-Frontend:
-  ./frontend/
-    -npm install
+Frontend:   
+  ./frontend/ 
+    -npm install    
     -npm run dev
 ------
-Backend:
-  ./backend
-    -npm install
-    -nodemon serve.js
+Backend:    
+  ./backend   
+    -npm install    
+    -nodemon server.js    
 ------
 Running tests:
 
-Frontend:
-  ./frontend/
-    -npm run test
+Frontend:   
+  ./frontend/   
+    -npm run test   
+    
+    cypress:    
+      ./frontend/   
+      -npx cypress open   
 
-Backend:
-  jest:
-    ./backend
+Backend:    
+  jest: 
+    ./backend   
+      -npm run test   
+      
+Backend:    
+  jest: 
+    ./backend   
       -npm run test
 
 The application is deployed to Render
