@@ -38,7 +38,7 @@ const AddProduct = () => {
 
   return (
     <form className='product-form' onSubmit={productSubmitHandler}>
-      <Input id="title" ref={titleRef} type="text" label="Product name" />
+      <Input id="title" ref={titleRef} type="text" label="Product name" required/>
       <Input id="description" ref={descriptionRef} type="text" label="Product description" />
       <Input id="image" ref={imageRef} type="text" label="Image Link" />
       <Input id="price" ref={priceRef} type="number" label="Price" />

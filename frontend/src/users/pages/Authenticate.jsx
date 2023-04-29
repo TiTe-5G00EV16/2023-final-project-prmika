@@ -90,38 +90,42 @@ const Authenticate = (props) => {
   }
 
   return (
-    <Card className="authentication">
-      <h2>{isLoginMode ? "LOGIN" : "SIGNUP"}</h2>
-      <form onSubmit={onSubmitHandler}>
-        {!isLoginMode && (
-          <Input id="name" ref={nameRef} type="text" label="Name" />
-        )}
-        <Input id="email" ref={emailRef} type="text" label="Email" />
-        <Input
-          id="password"
-          ref={passwordRef}
-          type="password"
-          label="Password"
-        />
+    <>
+      <Card className="authentication">
+        <h2>{isLoginMode ? "LOGIN" : "SIGNUP"}</h2>
+        <form onSubmit={onSubmitHandler}>
+          {!isLoginMode && (
+            <Input id="name" ref={nameRef} type="text" label="Name" />
+          )}
+          <Input id="email" ref={emailRef} type="text" label="Email" />
+          <Input
+            id="password"
+            ref={passwordRef}
+            type="password"
+            label="Password"
+          />
 
-        <Button type="submit" disable={signUpUserMutation.isLoading}>
-          {isLoginMode ? "LOGIN" : "SIGNUP"}
-        </Button>        
-      </form>
-      <p>{isLoginMode ? "Not a user yet?" : "Allready a user?"}</p>
-      <Button inverse onClick={switchModeHanlder}>
-        {isLoginMode ? "SignUp" : "Login"} instead?
-      </Button>
-      {isLoginMode ? 
-      <>
-        <p>forgot password?</p>
-          <Input id="email2" ref={email2Ref} type="text" label="Email" />
-          <Input id="password2" ref={password2Ref} type="text" label="new password" />
-        <Button onClick={resetPasswordHandler}>Reset password</Button>
-        
-      </>
-      :''}
-    </Card>
+          <Button type="submit" disable={signUpUserMutation.isLoading}>
+            {isLoginMode ? "LOGIN" : "SIGNUP"}
+          </Button>
+        </form>
+        <p>{isLoginMode ? "Not a user yet?" : "Allready a user?"}</p>
+        <Button inverse onClick={switchModeHanlder}>
+          {isLoginMode ? "SignUp" : "Login"} instead?
+        </Button>
+      </Card>
+      <br />
+      {isLoginMode ?
+        <Card className="authentication">
+          <>
+            <p>forgot password?</p>
+            <Input id="email2" ref={email2Ref} type="text" label="Email" />
+            <Input id="password2" ref={password2Ref} type="text" label="new password" />
+            <Button onClick={resetPasswordHandler}>Reset password</Button>
+          </>
+        </Card>
+        : ''}
+    </>
   );
 };
 

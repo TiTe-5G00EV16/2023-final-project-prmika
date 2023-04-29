@@ -11,6 +11,11 @@ return <ul className="nav-links">
   <li>
       <NavLink to="/" exact>ALL PRODUCTS</NavLink>
   </li>
+  {auth.isLoggedIn && (
+    <li>
+      <NavLink to="/myproducts" exact>MY PRODUCTS</NavLink>
+    </li>
+  )}
   <li>
       <NavLink to="/cities" exact>ALL CITIES</NavLink>
   </li>

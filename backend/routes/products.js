@@ -6,7 +6,7 @@ const verifyToken = require('../middleware/verifyToken');
 const { createProduct, deleteProduct, getProducts, getProductById, getProductByOwnerId, getProductsByOwner } = require('../controllers/products');
 
 router.get('/', getProducts);
-router.get('/:owner', getProductByOwnerId);
+router.get('/owner/:owner', getProductByOwnerId);
 router.get('/id/:id', getProductById);
 
 

@@ -7,6 +7,14 @@ export const getProducts = async () => {
   return await res.json();
 };
 
+export const getProductsByOwner = async ({ id }) => {
+  const res = await fetch(
+    `${import.meta.env.VITE_API_URL}/api/products/owner/${id}`
+    );
+    console.log(res);
+  return await res.json();
+};
+
 
 export const createProduct = async ({ title, description, image,price,owner, token }) => {
   console.log(title, price, image,owner);

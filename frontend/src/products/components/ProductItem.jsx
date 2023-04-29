@@ -60,7 +60,7 @@ const ProductItem = props => {
             </div>
             <div className="product-item__info">
               <h3>
-                  {props.title} - {props.price}
+                  {props.title} - {props.price}€
               </h3>
               <p>
                 {props.description}

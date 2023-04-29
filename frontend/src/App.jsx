@@ -16,6 +16,7 @@ import { AuthContext } from "./shared/context/auth-context";
 import { useCallback, useEffect, useState } from "react";
 import Products from "./products/pages/Products";
 import AddProduct from "./products/pages/AddProduct";
+import OwnProducts from "./products/pages/OwnProducts";
 
 const queryClient = new QueryClient();
 let logoutTimer;
@@ -78,6 +79,9 @@ useEffect(() => {
       <Switch>
         <Route path="/" exact>
           <Products />
+        </Route>
+        <Route path="/myproducts" exact>
+          <OwnProducts />
         </Route>
         <Route path="/cities" exact>
           <Cities />
