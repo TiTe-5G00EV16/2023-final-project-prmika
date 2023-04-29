@@ -36,6 +36,6 @@ describe('The ProductsList', () => {
   test('should show a list of products', () => {
     render(<ProductsList items={TEST_PRODUCT_DATA} />, { wrapper })  
     expect(screen.queryByText('No Products found.')).toBeNull();
-    expect(screen.getByText('jalkapallo - 1545')).toBeInTheDocument();
+    expect(screen.getByText('jalkapallo - 1545€')).toBeInTheDocument();
   });
 });

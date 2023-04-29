@@ -7,7 +7,7 @@ const users = require('../models/users');
 const getUsers = async (req, res) => {
   try {
     const response = await users.findAll();
-    if(response) {
+    if (response) {
       res.send(response);
     }
   } catch (err) {
@@ -23,7 +23,7 @@ const signUpUser = async (req, res) => {
   let hashedPassword;
   try {
     hashedPassword = await bcrypt.hash(password, 12);
-    
+
   } catch (err) {
     return res.status(500).send('Could not create user, try again please');
   }
@@ -42,7 +42,7 @@ const signUpUser = async (req, res) => {
     }
 
     const result = await users.create(newUser);
-    
+
     if (!result) {
       return res.status(500).send('Could not create user, try again please');
     }
@@ -55,20 +55,20 @@ const signUpUser = async (req, res) => {
       process.env.JWT_KEY,
       { expiresIn: '1h' }
     );
-      
-        res.status(201).json({
-          id: newUser.id,
-          email: newUser.email,
-          token: token
-        })
-      
+
+    res.status(201).json({
+      id: newUser.id,
+      email: newUser.email,
+      token: token
+    })
+
 
   } catch (err) {
     console.log("error: " + err);
     return res.status(500).send('Could not create user, try again please');
   }
-  
-  
+
+
 };
 
 const loginUser = async (req, res) => {
@@ -113,12 +113,37 @@ const loginUser = async (req, res) => {
   } catch (err) {
     return res.status(500).send('Something went wrong');
   }
-
-
 };
 
+const resetPassword = async (req, res) => {
+  const { email, password } = req.body;
+
+  let identifiedUser;
+  try {
+    const result = await users.findByEmail(email);
+    if (!result[0]) {
+      return res.status(401).send('No user found - Check your credentials');
+    }
+    identifiedUser = result[0];
+  } catch (err) {
+    return res.status(500).send('Something went wrong');
+  }
+  let hashedPassword;
+  try {
+    hashedPassword = await bcrypt.hash(password, 12);
+  } catch (err) {
+    return res.status(500).send('Could not create user, try again please');
+  }
+  const result = await users.reset(email, hashedPassword);
+
+  if (!result) {
+    return res.status(500).send('Could not change password, try again please');
+  }
+  return res.status(201).send(result);
+};
 module.exports = {
   getUsers,
   loginUser,
-  signUpUser
+  signUpUser,
+  resetPassword
 }

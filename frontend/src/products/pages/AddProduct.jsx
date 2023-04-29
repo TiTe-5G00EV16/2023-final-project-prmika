@@ -22,6 +22,7 @@ const AddProduct = () => {
     mutationFn: createProduct
   })
 
+  
   const productSubmitHandler = (event) => {
     event.preventDefault();
     createProductMutation.mutate({
@@ -38,10 +39,10 @@ const AddProduct = () => {
 
   return (
     <form className='product-form' onSubmit={productSubmitHandler}>
-      <Input id="title" ref={titleRef} type="text" label="Product name" />
-      <Input id="description" ref={descriptionRef} type="text" label="Product description" />
+      <Input required id="title" ref={titleRef} type="text" label="Product name" placeholder="required" />
+      <Input id="description" ref={descriptionRef} type="text" label="Product description" maxLength="400"/>
       <Input id="image" ref={imageRef} type="text" label="Image Link" />
-      <Input id="price" ref={priceRef} type="number" label="Price" />
+      <Input required id="price" ref={priceRef} type="number" label="Price" placeholder="required" />
       <Button id="add-product">
         Add Product
       </Button>

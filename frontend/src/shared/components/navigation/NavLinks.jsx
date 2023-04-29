@@ -11,17 +11,14 @@ return <ul className="nav-links">
   <li>
       <NavLink to="/" exact>ALL PRODUCTS</NavLink>
   </li>
-  <li>
-      <NavLink to="/cities" exact>ALL CITIES</NavLink>
-  </li>
   {auth.isLoggedIn && (
     <li>
-      <NavLink to="/users" exact>ALL USERS</NavLink>
+      <NavLink to="/myproducts" exact>MY PRODUCTS</NavLink>
     </li>
   )}
   {auth.isLoggedIn && (
     <li>
-      <NavLink to="/cities/new">ADD CITY</NavLink>
+      <NavLink to="/users" exact>ALL USERS</NavLink>
     </li>
   )}
   {auth.isLoggedIn && (

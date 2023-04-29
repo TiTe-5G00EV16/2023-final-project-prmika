@@ -55,5 +55,20 @@ describe('SIGNUP users endpoint', () => {
       expect(response.body.email).toBeTruthy();
       expect(response.body.token).toBeTruthy();
   }); 
+  test("should change user's password to test123", async () => {
+    const data = {
+      email: 'tony@stark.com',
+      password: 'test123'
+    }
+
+    const response = await supertest(app)
+      .post('/api/users/reset')
+      .set('Accept', 'application/json')
+      .set('Content', 'application/json')
+      .send(data)
+
+      expect(response.status).toEqual(201);
+      expect(response.headers['content-type']).toMatch(/json/);
+  }); 
   
 });

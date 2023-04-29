@@ -1,9 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 
-const cities = require('./routes/cities');
 const users = require('./routes/users');
-const chains = require('./routes/chains');
 const products = require('./routes/products');
 
 const app = express();
@@ -16,8 +14,6 @@ app.use(cors({
 }));
 app.use(express.json());
 
-app.use('/api/cities', cities);
-app.use('/api/chains', chains);
 app.use('/api/products', products);
 app.use('/api/users', users);
 app.get('/health', (req, res) => {

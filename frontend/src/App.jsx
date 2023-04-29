@@ -4,8 +4,6 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
-import Cities from "./cities/pages/Cities";
-import AddCity from "./cities/pages/AddCity";
 import { QueryClient, QueryClientProvider } from "react-query";
 import "./App.css";
 import Users from "./users/pages/Users";
@@ -16,6 +14,7 @@ import { AuthContext } from "./shared/context/auth-context";
 import { useCallback, useEffect, useState } from "react";
 import Products from "./products/pages/Products";
 import AddProduct from "./products/pages/AddProduct";
+import OwnProducts from "./products/pages/OwnProducts";
 
 const queryClient = new QueryClient();
 let logoutTimer;
@@ -79,15 +78,12 @@ useEffect(() => {
         <Route path="/" exact>
           <Products />
         </Route>
-        <Route path="/cities" exact>
-          <Cities />
+        <Route path="/myproducts" exact>
+          <OwnProducts />
         </Route>
-        <Route path="/users" exact>
+        {/* <Route path="/users" exact>
           <Users />
-        </Route>
-        <Route path="/cities/new" exact>
-          <AddCity />
-        </Route>
+        </Route> */}
         <Route path="/products/new" exact>
           <AddProduct />
         </Route>
